@@ -1,0 +1,21 @@
+<nav class="navbar navbar-light bg-info">
+    <div class="d-flex w-100 justify-content-center align-items-center">
+        {{!-- <Logo::Arrows @width="70"/> --}}
+        <Logo::Icon @width="120" />
+        <div class="container-fluid">
+            <LinkTo class="text-decoration-none" @route="index">
+                <span class="navbar-brand mb-0 h1 fw-bolder text-light" style="font-size: 30px;">Junction Manual</span>
+            </LinkTo>
+
+        </div>
+        <div>
+            <LinkTo class="text-decoration-none" @route="troubleshooting">
+                <span class="navbar-brand mb-0 h1 text-light fs-6">Troubleshooting</span>
+            </LinkTo>
+        </div>
+    </div>
+
+</nav>
+
+
+{{yield}}

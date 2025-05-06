@@ -1,0 +1,41 @@
+{{!-- Remove the WelcomeFlame component and write your HTML code here --}}
+<div class="pe-5 ps-5">
+  <Navbar />
+  <h1 class="mt-2">DATA TYPES</h1>
+
+  <div class="d-flex flex-column flex-lg-row justify-content-between">
+    <!-- Grid Area -->
+    <div class="d-flex flex-wrap gap-1 justify-content-start" id="data-box-parent">
+      {{#each this.items as |item|}}
+        <div 
+          {{on "click" (fn this.showImage item)}}
+          class="bg-secondary text-white d-flex justify-content-center align-items-center" id="data-box"
+          
+        >
+          {{item.title}}
+        </div>
+      {{/each}}
+    </div>
+
+    <!-- Selected Image -->
+    {{#if this.selectedItem}}
+    <div class="mt-4 me-lg-10">
+      <h3>Selected: {{this.selectedItem.title}}</h3>
+      <img id="selected-images" src="{{this.selectedItem.imageUrl}}" alt="Preview"  class="img-fluid mt-2" />
+    </div>
+    {{/if}}
+  </div>
+
+  <!-- Button -->
+  <div class="text-end mt-1">
+    <LinkTo @route="dataexchange">
+      <button type="button" class="btn btn-outline-info mb-3">Data Exchange &rarr;</button>
+    </LinkTo>
+  </div>
+</div>
+
+
+
+{{!-- / --}}
+
+{{outlet}}

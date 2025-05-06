@@ -1,0 +1,78 @@
+{{page-title "Troubleshooting"}}
+<div class="pe-5 ps-5">
+    <Navbar />
+    <div class="container d-flex justify-content-center align-items-center mt-2">
+        <div class="w-100" style="max-width: 600px;">
+            <h2 class="mb-1 text-center">Report an Issue</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+
+                <div class="mb-3">
+
+                    {{#let (file-queue name="issueVideo" onFileAdded=this.handleVideoUpload) as |queue|}}
+                    <label for="issueVideo" class="btn btn-secondary" id="issueVideos">Upload issue video</label>
+
+                    <input class="form-control d-none" type="file" id="issueVideo" name="issueVideo" accept="video/*"
+                        {{queue.selectFile}}>
+
+                    {{#if this.selectedVideoFileName}}
+                    <div class="mt-2 text-muted">Selected file: {{this.selectedVideoFileName}}</div>
+                    {{else}}
+                    <div class="mt-2 text-muted">No file chosen</div>
+                    {{/if}}
+                    {{/let}}
+
+                    {{!-- <div class="form-text">You can upload a screen recording to show the issue.</div> --}}
+                </div>
+
+                <div class="mb-3">
+                    <label for="expectedBehavior" class="form-label">Expected Behavior</label>
+                    <textarea class="form-control" id="expectedBehavior" name="expectedBehavior" rows="3"
+                        required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="actualBehavior" class="form-label">Actual Behavior</label>
+                    <textarea class="form-control" id="actualBehavior" name="actualBehavior" rows="3"
+                        required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="operatingSystem" class="form-label">Operating System</label>
+                    <select class="form-select" id="operatingSystem" name="operatingSystem" required>
+                        <option value="" disabled selected>Select your OS</option>
+                        <option>Windows 11</option>
+                        <option>Windows 10</option>
+                        <option>macOS Ventura</option>
+                        <option>Ubuntu</option>
+                        <option>Android</option>
+                        <option>iOS</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="webBrowser" class="form-label">Web Browser</label>
+                    <select class="form-select" id="webBrowser" name="webBrowser" required>
+                        <option value="" disabled selected>Select your browser</option>
+                        <option>Google Chrome</option>
+                        <option>Mozilla Firefox</option>
+                        <option>Microsoft Edge</option>
+                        <option>Safari</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="d-grid mb-3">
+                    <button {{on "click" this.inputData }} type="button" class="btn btn-primary">Submit Report</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{{outlet}}
